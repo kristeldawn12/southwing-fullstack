@@ -22,6 +22,10 @@ const NewProduct = () => {
     });
   };
 
+  const [apiURL, setApiURL] = useState(
+    "https://southwing-cafeteria.onrender.com"
+  );
+
   const uploadImage = async (e) => {
     const data = await ImageToBase64(e.target.files[0]);
 
@@ -41,14 +45,11 @@ const NewProduct = () => {
 
     if (name && category && image && price) {
       try {
-        const fetchData = await fetch(
-          `${process.env.REACT_APP_SERVER_DOMAIN}/products/uploadProduct`,
-          {
-            method: "POST",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify(data),
-          }
-        );
+        const fetchData = await fetch(`${apiURL}/products/uploadProduct`, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(data),
+        });
 
         const fetchRes = await fetchData.json();
         toast(fetchRes.message);

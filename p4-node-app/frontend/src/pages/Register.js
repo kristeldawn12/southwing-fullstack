@@ -18,6 +18,10 @@ const Register = () => {
     confirmPassword: "",
     image: "",
   });
+  // eslint-disable-next-line no-unused-vars
+  const [apiURL, setApiURL] = useState(
+    "https://southwing-cafeteria.onrender.com"
+  );
 
   const handleShowPassword = () => {
     setShowPassword((previous) => !previous);
@@ -55,16 +59,13 @@ const Register = () => {
     if (firstName && email && password && confirmPassword) {
       if (password === confirmPassword) {
         try {
-          const fetchData = await fetch(
-            `${process.env.REACT_APP_SERVER_DOMAIN}/users/register`,
-            {
-              method: "POST",
-              headers: {
-                "content-type": "application/json",
-              },
-              body: JSON.stringify(data),
-            }
-          );
+          const fetchData = await fetch(`${apiURL}/users/register`, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
 
           const dataRes = await fetchData.json();
           console.log(dataRes);

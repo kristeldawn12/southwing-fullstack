@@ -13,6 +13,11 @@ const Login = () => {
     password: "",
   });
 
+  // eslint-disable-next-line no-unused-vars
+  const [apiURL, setApiURL] = useState(
+    "https://southwing-cafeteria.onrender.com"
+  );
+
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -37,16 +42,13 @@ const Login = () => {
 
     if (email && password) {
       try {
-        const fetchData = await fetch(
-          `${process.env.REACT_APP_SERVER_DOMAIN}/users/login`,
-          {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(data),
-          }
-        );
+        const fetchData = await fetch(`${apiURL}/users/login`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
 
         const dataRes = await fetchData.json();
         console.log(dataRes);

@@ -2,19 +2,21 @@ import { Outlet } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
 import { Toaster } from "react-hot-toast";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { setDataProduct } from "./redux/productSlice";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 
 function App() {
   const dispatch = useDispatch();
+  // eslint-disable-next-line no-unused-vars
+  const [apiURL, setApiURL] = useState(
+    "https://southwing-cafeteria.onrender.com"
+  );
 
   const getProduct = async () => {
     try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_SERVER_DOMAIN}/products`
-      );
+      const response = await axios.get(`${apiURL}/products`);
 
       dispatch(setDataProduct(response.data.data));
     } catch (error) {
@@ -24,6 +26,7 @@ function App() {
 
   useEffect(() => {
     getProduct();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
