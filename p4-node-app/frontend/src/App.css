@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.about-text {
+  font-family: "Caveat", cursive;
+}
+
+.hoverable {
+  position: relative;
+}
+.category {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 1;
+  font-size: 14px;
+  text-align: center;
+}
+.hoverable:hover .category {
+  display: block;
+}
