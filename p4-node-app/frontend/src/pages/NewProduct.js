@@ -22,6 +22,7 @@ const NewProduct = () => {
     });
   };
 
+  // eslint-disable-next-line no-unused-vars
   const [apiURL, setApiURL] = useState(
     "https://southwing-cafeteria.onrender.com"
   );
