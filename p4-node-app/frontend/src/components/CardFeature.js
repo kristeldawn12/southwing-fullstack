@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addCartItem } from "../redux/productSlice";
 import { RxCrossCircled } from "react-icons/rx";
-import Item from "../pages/Item";
 
 const CardFeature = ({ image, name, price, category, id, onDelete }) => {
   const dispatch = useDispatch();
